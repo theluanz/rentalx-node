@@ -11,9 +11,7 @@ class SpecificationsRepository implements ISpecificationsRepository {
   private repository: Repository<Specification>;
 
   constructor() {
-    console.log("ssss");
     this.repository = AppDataSource.getRepository(Specification);
-    console.log(this.repository);
   }
 
   async create({ name, description }: ICreateSpecificationDTO): Promise<void> {
