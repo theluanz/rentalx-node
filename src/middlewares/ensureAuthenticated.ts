@@ -31,6 +31,10 @@ async function EnsureAuthenticated(
     if (!user) {
       throw new AppError("User not found", 401);
     }
+
+    request.user = {
+      id: user_id,
+    };
   } catch {
     throw new AppError("Invalid Token", 401);
   }

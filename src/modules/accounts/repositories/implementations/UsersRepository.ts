@@ -1,7 +1,6 @@
 import { Repository } from "typeorm";
 
 import AppDataSource from "../../../../database/data-source";
-import { AppError } from "../../../../errors/AppError";
 import { ICreateUserDTO } from "../../dtos/ICreateUserDTO";
 import { User } from "../../entities/User";
 import { IUsersRepository } from "../IUsersRepository";
@@ -14,16 +13,20 @@ class UsersRepository implements IUsersRepository {
   }
 
   async create({
+    id,
     name,
     email,
     driver_license,
     password,
+    avatar,
   }: ICreateUserDTO): Promise<void> {
     const user = this.repository.create({
+      id,
       name,
       email,
       driver_license,
       password,
+      avatar,
     });
     await this.repository.save(user);
   }
@@ -35,9 +38,6 @@ class UsersRepository implements IUsersRepository {
   async findById(id: string): Promise<User> {
     const user = await this.repository.findOne({ where: { id } });
     return user;
-  }
-  async save(user: User): Promise<void> {
-    throw new AppError("Method not implemented.");
   }
 }
 export { UsersRepository };
