@@ -1,6 +1,7 @@
 import { Repository } from "typeorm";
 
 import AppDataSource from "../../../../database/data-source";
+import { AppError } from "../../../../errors/AppError";
 import { ICreateUserDTO } from "../../dtos/ICreateUserDTO";
 import { User } from "../../entities/User";
 import { IUsersRepository } from "../IUsersRepository";
@@ -36,7 +37,7 @@ class UsersRepository implements IUsersRepository {
     return user;
   }
   async save(user: User): Promise<void> {
-    throw new Error("Method not implemented.");
+    throw new AppError("Method not implemented.");
   }
 }
 export { UsersRepository };
