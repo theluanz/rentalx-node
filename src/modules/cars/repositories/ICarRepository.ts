@@ -1,5 +1,5 @@
 import { ICreateCarsDTO } from "../dtos/ICreateCarsDTO";
-import { Car } from "../infra/typeorm/entities/Cars";
+import { Car } from "../infra/typeorm/entities/Car";
 
 interface ICarsRepository {
   findByLicensePlate(license_plate: string): Promise<Car>;
